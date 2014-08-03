@@ -13,10 +13,12 @@ import (
   "github.com/martini-contrib/sessions"
 )
 
+import golang_oauth2 "github.com/golang/oauth2"
+
 func main() {
   m := martini.Classic()
   m.Use(sessions.Sessions("my_session", sessions.NewCookieStore([]byte("secret123"))))
-  m.Use(oauth2.Google(&oauth2.Options{
+  m.Use(oauth2.Google(&golang_oauth2.Options{
     ClientId:     "client_id",
     ClientSecret: "client_secret",
     RedirectURL:  "redirect_url",
